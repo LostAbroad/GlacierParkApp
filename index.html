@@ -36,6 +36,7 @@
     <nav class="navbar navbar-expand-md fixed-top" style="background-color: #AED5DB;" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header d-flex flex-wrap">
+                <button type="button" class="btn btn-xs btn-default float-left" id="sidebar-toggle-btn"><i class="fa fa-bars"></i></button>
                 <a class="navbar-brand" href="https://www.nps.gov/glac/planyourvisit/camping.htm">Glacier Park Trails App</a>
 <!--
                 <div class="navbar-icon-container">
@@ -76,12 +77,13 @@
     
 
     <div id="container">
-        <div id="sidebar">
+        <div id="sidebar" style="display:none">
 <!--            <button type="button" class="btn btn-xs btn-default float-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button>-->
             <div class="sidebar-wrapper">
                 <div class="card card-default" id="features">
                     <div class="card-header">
                         <h3 class="card-title">Find Your Trail!
+<!--                            <button type="button" class="btn btn-xs btn-default float-left" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button>-->
 <!--                            <button type="button" class="btn btn-sm btn-default float-right" data-toggle="collapse" href="#filterSection" aria-expanded="false" aria-control="filterSection" id="sidebar-open-filter"><i class="fa fa-chevron-down"></i></button></h3>-->
                         </h3>
                     </div>

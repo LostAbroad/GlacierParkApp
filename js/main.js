@@ -477,24 +477,24 @@ $(document).ready(function () {
     });
 //
 //    $('<p class = "controlHeader">Basemap Tilesets</p>').insertBefore('div.leaflet-control-layers-base');
+//
+    $("#sidebar-toggle-btn").click(function () {
+        animateSidebar();
+        return false;
+    });
 
-//    $("#sidebar-toggle-btn").click(function () {
-//        animateSidebar();
-//        return false;
-//    });
-
-//    $("#sidebar-hide-btn").click(function () {
-//        animateSidebar();
-//        return false;
-//    });
-    //open and close sidebar
-//    function animateSidebar() {
-//        $("#sidebar").animate({
-//            width: "toggle"
-//        }, 100, function () {
-//            map.invalidateSize();
-//        });
-//    }
+    $("#sidebar-hide-btn").click(function () {
+        animateSidebar();
+        return false;
+    });
+//    open and close sidebar
+    function animateSidebar() {
+        $("#sidebar").animate({
+            width: "toggle"
+        }, 100, function () {
+            map.invalidateSize();
+        });
+    }
 
 //    function openReview() {
 //        $("#reviewTrails").animate('show');
