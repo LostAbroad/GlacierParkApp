@@ -14,6 +14,12 @@ body {
     padding-top: 62px;
 }
 
+@media (max-width: 320px) {
+.element {
+      width: 90%;   
+     }
+}  
+
 .controlHeader {
     font-weight: bold;
     margin-bottom: .2em;
