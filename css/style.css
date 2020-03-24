@@ -3,8 +3,8 @@
 html,
 body,
 #container {
-    height: 100%;
-    width: 100%;
+    height: 100% auto;
+    width: 100% auto;
     overflow: hidden;
 }
 
@@ -13,12 +13,14 @@ body,
 body {
     padding-top: 62px;
 }
+/*
 
 @media (max-width: 320px) {
 .element {
       width: 90%;   
      }
 }  
+*/
 
 .controlHeader {
     font-weight: bold;
@@ -29,8 +31,8 @@ body {
 #sidebar {
     display: block;
     width: 250px;
-    height: 100%;
-    max-width: 100%;
+    height: 100% auto;
+    max-width: 100% auto;
     float: left;
 /*    margin-top: 1%;*/
     background-color: #343a40;
