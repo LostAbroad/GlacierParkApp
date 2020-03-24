@@ -13,14 +13,6 @@ body,
 body {
     padding-top: 62px;
 }
-/*
-
-@media (max-width: 320px) {
-.element {
-      width: 90%;   
-     }
-}  
-*/
 
 .controlHeader {
     font-weight: bold;
@@ -29,9 +21,10 @@ body {
 }
 
 #sidebar {
-    max-width: 250px;
-    height: 100% auto;
-    min-width: 100% auto;
+    display: block;
+    width: 250px;
+    height: 100%;
+    max-width: 100%;
     float: left;
 /*    margin-top: 1%;*/
     background-color: #343a40;
@@ -117,9 +110,11 @@ a#filter-btn:hover {
     padding-bottom: 75px;
 }
 
+/*
 .leaflet-control-layers-toggle{
     border: 60px;
 }
+*/
 
 .leaflet-control-layers-expanded {
     overflow: auto;
