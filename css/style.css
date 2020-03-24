@@ -1,0 +1,268 @@
+/* Stylesheet by */
+
+html,
+body,
+#container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 62px;
+}
+
+.controlHeader {
+    font-weight: bold;
+    margin-bottom: .2em;
+
+}
+
+#sidebar {
+    display: block;
+    width: 250px;
+    height: 100%;
+    max-width: 100%;
+    float: left;
+/*    margin-top: 1%;*/
+    background-color: #343a40;
+    
+}
+
+#mapid {
+    width: auto;
+    height: 100%;
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);*/
+}
+
+#features {
+    margin: 0px;
+    border: none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#reviewtrails {
+    margin: 0px;
+    border: none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#sidebar-hide-btn {
+    margin-top: -2px;
+}
+
+a#filter-btn {
+    color: lightblue;
+    font-weight: 400;
+    text-shadow: 2px 2px 4px #000000;
+
+}
+
+a#review-btn {
+    color: lightcoral;
+    font-weight: 400;
+    text-shadow: 2px 2px 4px #000000;
+
+}
+
+/*
+a#review-btn:hover {
+    color: cadetblue;
+}
+
+a#filter-btn:hover {
+    color: cadetblue;
+}
+*/
+
+.white {
+    color: darkcyan;
+}
+
+.card-header {
+    width: 250px;
+    height: 50px;
+}
+.card-title{
+    font-size: 20px;
+}
+
+.card-body {
+    width: 250px;
+}
+
+.feature-row {
+    cursor: pointer;
+    width: 250px;
+}
+
+.sidebar-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    padding-bottom: 75px;
+}
+
+.leaflet-control-layers-toggle{
+    border: 60px;
+}
+
+.leaflet-control-layers-expanded {
+    overflow: auto;
+}
+
+.leaflet-control-layers label {
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+
+.leaflet-control-layers-list input[type="radio"],
+input[type="checkbox"] {
+    margin: 2px;
+}
+
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 25px;
+    color: darkcyan;
+}
+
+.navbar-collapse.in {
+    overflow-y: hidden;
+}
+
+#reviewSection{
+    background-color: aliceblue;
+}
+
+#filterSection{
+    background-color: floralwhite;
+}
+
+.trailform {
+    width: 200px;
+}
+
+.trail-filter {
+    margin-bottom: 0px;
+}
+
+#trailFiltOutput {
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+
+#searchbar{
+    padding-left: 4000px;
+}
+.leaflet-control-zoomhome a {
+    font-size: 13pt;
+}
+
+.navbar-header .navbar-icon-container {
+    margin-right: 15px;
+}
+
+.navbar-icon-container .navbar-icon {
+    line-height: 40px;
+    height: 40px;
+}
+
+.navbar-icon-container a.navbar-icon {
+    margin-left: 25px;
+}
+
+
+.has-feedback .form-control-feedback {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+}
+
+/*
+@media (max-width: 992px) {
+    .navbar .navbar-brand {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    #sidebar {
+        display: none;
+    }
+
+    .url-break {
+        word-break: break-all;
+        word-break: break-word;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+
+    .dropdown-menu a i {
+        color: #FFFFFF;
+    }
+}
+*/
+
+#reviewSubmitBtn {
+    border-radius: 4px;
+    background-color: darkcyan;
+    color: ghostwhite;
+}
+
+/*
+#reviewSubmitBtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+*/
+
+#querySubmitBtn {
+    border-radius: 4px;
+    background-color: darkcyan;
+    color: ghostwhite;
+}
+
+/*
+#querySubmitBtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+*/
+/*
+
+.navbar-icon-container {
+    float: right !important;
+    position: absolute;
+    right: 0;
+        top: 1000;
+    padding-right: 1.5em;
+}
+*/
+
+/*
+.right-addon {
+    margin-left: -2em;
+}
+*/
+
+#query-trails-reset {
+    margin-left: 40px;
+}
+
+/*
+#query-trails-reset:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+*/

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+
+    <!--put your external stylesheet links here-->
+    <!--Carto Css-->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <!--    Personal font awesome cdn-->
+    <script src="https://kit.fontawesome.com/9790948087.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="lib/leaflet-search/leaflet-search.css" />
+
+    <link rel="stylesheet" href="lib/leaflet-locatecontrol/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="js/groupedlayercontrol/leaflet.groupedlayercontrol.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if IE<9]>
+			<link rel="stylesheet" href="css/style.ie.css">
+		<![endif]-->
+
+
+</head>
+
+<body>
+
+    <!--Navigation Bar -->
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #AED5DB;" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header d-flex flex-nowrap">
+                <a class="navbar-brand" href="https://www.nps.gov/glac/planyourvisit/camping.htm">Glacier National Park Lodging and Campsites</a>
+<!--
+                <div class="navbar-icon-container">
+                    <a href="#" class="navbar-icon float-right d-block d-lg-none" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+                    <a href="#" class="navbar-icon float-right d-block d-lg-none" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
+                </div>
+-->
+            </div>
+            <div class="navbar-collapse collapse">                         
+                <ul class="nav navbar-nav">
+                     <li><a href="https://lostabroad.github.io/jasonheutmaker/#portfolio" id="about-btn">&nbsp;&nbsp;About Me&nbsp;&nbsp;<i class="fa fa-question-circle white"></i></a></li>
+                </ul>
+                    </div>
+            <table id="searchbar">
+				<tr>
+					<td style="font-family: Arial, Helvetica, sans-serif; font-size: 10pt; ">
+						<form style="margin:0px; margin-top:4px;" action="https://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+							<input type="hidden" name="si" value="6665936">
+							<input type="hidden" name="pid" value="r">
+							<input type="hidden" name="_charset_" value="">
+							<input type="hidden" name="bcd" value="&#247;">
+							<center>
+								Search <input style="vertical-align: -20%;" type="radio" name="t" value="s" CHECKED> This site <input style="vertical-align: -20%;" type="radio" name="t" value="w"> The web<br></center>
+							<input type="text" name="query" size="15">
+							<input type="submit" value="Search">
+						</form>
+					</td>
+				</tr>
+			</table>
+    
+<!--
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="filter-btn"><i class="fas fa-filter white"></i>&nbsp;&nbsp;Filter Trails&nbsp;&nbsp;</a></li>
+                    <li class="d-block d-xs-block"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="review-btn"><i class="fas fa-pen white"></i>&nbsp;&nbsp;Write Review</a></li>
+-->
+        </div>
+    </nav>
+    
+
+    <div id="container">
+        <div id="sidebar">
+<!--            <button type="button" class="btn btn-xs btn-default float-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button>-->
+            <div class="sidebar-wrapper">
+                <div class="card card-default" id="features">
+                    <div class="card-header">
+                        <h3 class="card-title">Find Your Trail!
+<!--                            <button type="button" class="btn btn-sm btn-default float-right" data-toggle="collapse" href="#filterSection" aria-expanded="false" aria-control="filterSection" id="sidebar-open-filter"><i class="fa fa-chevron-down"></i></button></h3>-->
+                    </div>
+                    <div class="collapse show" id="filterSection">
+                        <div class="card-body">
+                            <form id="query_trails_form">
+                                <div><label>Trail Distance:</label>
+                                    <select name="mileage">
+                                        <option value="">Select Distance</option>
+                                        <option value="< 1">Less than 1 mile</option>
+                                        <option value="> 1 AND miles < 2">1-2 miles</option>
+                                        <option value="> 2 AND miles < 3">2-3 miles</option>
+                                        <option value="> 3 AND miles < 5">3-5 miles</option>
+                                        <option value="> 5 AND miles < 10">5-10 miles</option>
+                                        <option value="> 10 AND miles < 15">10-15 miles</option>
+                                        <option value="> 15 AND miles < 20">15-20 miles</option>
+                                        <option value="> 20">Greater than 20 miles</option>
+                                    </select>
+                                </div>
+                                <div><label>Trail Usage:</label>
+                                    <select name="surface_type">
+                                        <option value="">Choose Foot Traffic</option>
+                                        <option value="Very Low Use / Low level of maintenance">Very Low Use</option>
+                                        <option value="Low Use / Low level of maintenance">Low Use</option>
+                                        <option value="Moderate to High Use / Highest level of maintenance">Moderate to High Use</option>
+                                    </select>
+                                </div>
+                                <div><label>Road Development:</label>
+                                    <select name="class_type">
+                                        <option value="">Choose Development</option>
+                                        <option value="%25Class 2%25">Dirt/Undeveloped</option>
+                                        <option value="%25Class 3%25">Gravel/Devloped</option>
+                                        <option value="%25Class 4%25">Asphalt/Highly Developed</option>
+                                    </select>
+                                </div>
+                                
+                                <br>
+                                <button type="submit" class="btn btn-default" id="querySubmitBtn">
+                                    Click to Search
+                                </button> <button type="button" class="btn-sm" id="query-trails-reset"><i class="fas fa-redo"></i></button>
+                            </form>
+                        </div>
+                        <div id="trailFiltOutput">
+                            <h6> Show Results:</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-default" id="reviewtrails">
+                    <div class="card-header">
+                        <h3 class="card-title">Submit Your Review!
+<!--                            <button type="button" class="btn btn-sm btn-default float-right" data-toggle="collapse" href="#reviewSection" aria-expanded="false" aria-control="reviewSection" id="sidebar-open-review"><i class="fa fa-chevron-down"></i></button></h3>-->
+                    </div>
+                    <div class="collapse show" id="reviewSection">
+                        <div class="card-body">
+                            <form id="review_trails_form">
+                                <div><label>Enter First Name:&nbsp</label><input placeholder="Type your first name" name="fn"></div>
+                                <div><label>Enter Last Name:&nbsp</label><input placeholder="Type your last name" name="ln"></div>
+                                <div><label>Select Hiked Trail:</label>
+                                    <select id="ddlTrails" class="trailform" name="trailID">
+                                    </select>
+                                </div>
+                                <div><label>Enter Date (Month & Year):&nbsp</label><input placeholder="Enter the date MM-YYYY" name="user_date"></div>
+                                <div><label>Review Comments:&nbsp</label><input placeholder="Write review here" name="review_"></div>
+                                <br>
+                                <button type="submit" class="btn btn-default" id="reviewSubmitBtn"> Click to Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mapid"></div>
+    </div>
+
+
+    <!--put your external script links here-->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+    <script type="text/javascript" src="lib/leaflet.zoomhome.js"></script>
+    <script src="lib/leaflet-locatecontrol/L.Control.Locate.min.js" type="text/javascript"></script>
+    <script src="js/groupedlayercontrol/leaflet.groupedlayercontrol.js" type="text/javascript"></script>
+    <script src="lib/leaflet-search/leaflet-search.js" type="text/javascript"></script>
+
+
+
+    <!--    my js script-->
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
