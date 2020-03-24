@@ -29,10 +29,9 @@ body {
 }
 
 #sidebar {
-    display: block;
-    width: 100px;
+    max-width: 250px;
     height: 100% auto;
-    max-width: 100% auto;
+    min-width: 100% auto;
     float: left;
 /*    margin-top: 1%;*/
     background-color: #343a40;
