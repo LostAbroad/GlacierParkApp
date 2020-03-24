@@ -153,6 +153,20 @@ input[type="checkbox"] {
     width: 170px;
 }
 
+.fn_placeholder{
+   width: 170px; 
+}
+
+.ln_placeholder{
+    width: 170px;  
+}
+.date_placeholder{
+    width: 170px;  
+
+}
+.review_placeholder{
+   width: 170px; 
+}
 .trail-filter {
     margin-bottom: 0px;
 }
