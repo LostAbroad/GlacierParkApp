@@ -20,7 +20,7 @@ var outdoors = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.
 var mapOptions = {
     zoomControl: false,
     center: [48.690176, -113.757130],
-    zoom: 8,
+    zoom: 9,
     minZoom: 3,
     maxZoom: 18,
     layers: [outdoors]
