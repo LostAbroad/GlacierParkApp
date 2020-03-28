@@ -20,7 +20,7 @@ var outdoors = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.
 var mapOptions = {
     zoomControl: false,
     center: [48.690176, -113.757130],
-    zoom: 10,
+    zoom: 8,
     minZoom: 3,
     maxZoom: 18,
     layers: [outdoors]
@@ -42,21 +42,21 @@ var baseMaps = {
 
 // sql queries to get layers
 
-var sqlQuery1 = "SELECT t.the_geom, t.class, t.route_no, t.name, t.meters, t.miles, t.trlname,t.trllabel, t.trluse, t.trlclass, u.first_name, u.last_name, u.trail_id, u.user_date, u.review FROM sgrandstrand.gnp_trailss AS t LEFT OUTER JOIN sgrandstrand.user_review AS u ON t.route_no = u.trail_id";
-var sqlQuery2 = "SELECT * FROM sgrandstrand.gnp_roads"; // roads
-var sqlQuery5 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Bus Stop / Shuttle Stop'";
-var sqlQuery6 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Cabin'";
-var sqlQuery7 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Campground'";
-var sqlQuery10 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Gas Station'";
-var sqlQuery13 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Lodging'";
-var sqlQuery14 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Parking'";
-var sqlQuery18 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Restroom'";
-var sqlQuery19 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Trailhead'";
-var sqlQuery20 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Train Station'";
-var sqlQuery22 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Viewpoint'";
-var sqlQuery23 = "SELECT * FROM sgrandstrand.gnp_poi WHERE poitype = 'Visitor Center'";
+var sqlQuery1 = "SELECT t.the_geom, t.class, t.route_no, t.name, t.meters, t.miles, t.trlname,t.trllabel, t.trluse, t.trlclass, u.first_name, u.last_name, u.trail_id, u.user_date, u.review FROM public.gnp_trailss AS t LEFT OUTER JOIN public.user_review AS u ON t.route_no = u.trail_id";
+var sqlQuery2 = "SELECT * FROM public.gnp_roads"; // roads
+var sqlQuery5 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Bus Stop / Shuttle Stop'";
+var sqlQuery6 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Cabin'";
+var sqlQuery7 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Campground'";
+var sqlQuery10 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Gas Station'";
+var sqlQuery13 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Lodging'";
+var sqlQuery14 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Parking'";
+var sqlQuery18 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Restroom'";
+var sqlQuery19 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Trailhead'";
+var sqlQuery20 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Train Station'";
+var sqlQuery22 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Viewpoint'";
+var sqlQuery23 = "SELECT * FROM public.gnp_poi WHERE poitype = 'Visitor Center'";
 //sql for dropdown list
-var sqlQueryddl = "SELECT route_no, trllabel FROM sgrandstrand.gnp_trailss"; // trails 
+var sqlQueryddl = "SELECT route_no, trllabel FROM public.gnp_trailss"; // trails 
 //icons 
 
 
@@ -123,7 +123,7 @@ var makePopUpContent = function (props) {
 }
 
 // urls to get layer from carto
-var callsite = "https://sgrandstrand.carto.com/api/v2/sql?format=geojson&q=";
+var callsite = "https://lostabroad.carto.com/api/v2/sql?format=geojson&q=";
 var url5 = callsite + sqlQuery5;
 var url6 = callsite + sqlQuery6;
 var url7 = callsite + sqlQuery7;
@@ -307,7 +307,7 @@ $.getJSON(url23, function (data) {
 
 
 // Get trails selection as GeoJSON and Add to Map
-var trails = $.getJSON("https://sgrandstrand.carto.com/api/v2/sql?format=GeoJSON&q=" + sqlQuery1, function (data) {
+var trails = $.getJSON("https://lostabroad.carto.com/api/v2/sql?format=GeoJSON&q=" + sqlQuery1, function (data) {
     trails = L.geoJson(data, {
         onEachFeature: function (feature, layer) {
             layer.bindPopup('<p><b>' + feature.properties.trllabel + '</b><br/><em>' + 'Trail Trail Distance: ' + feature.properties.miles + '<br/><em>'+ 'Trail Use: ' + feature.properties.trluse + '<br/><em>' + 'Reviews: ' + feature.properties.user_date + ': ' + feature.properties.review + '</p>');
@@ -356,7 +356,7 @@ function styleFilterTrails(feature) {
     };
 }
 
-var roads = $.getJSON("https://sgrandstrand.carto.com/api/v2/sql?format=GeoJSON&q=" + sqlQuery2, function (data) {
+var roads = $.getJSON("https://lostabroad.carto.com/api/v2/sql?format=GeoJSON&q=" + sqlQuery2, function (data) {
     roads = L.geoJson(data, {
         onEachFeature: function (feature, layer) {
             layer.bindPopup('<p><b>' + feature.properties.rdlabel + '</b><br /><em>' + 'Surface Type: ' + feature.properties.rdsurface + '</p>');
@@ -455,8 +455,8 @@ var locateControl = L.control.locate({
 
 
 function getsearchdata() {
-    var sqlSer = "SELECT poilabel, poitype, the_geom FROM sgrandstrand.gnp_poi WHERE poitype IN ('Bus Stop / Shuttle Stop','Cabin','Campground','Gas Station','Lodging','Parking','Restroom','Trailhead', 'Train Station','Viewpoint','Visitor Center')";
-    var searchLayer = $.getJSON("https://sgrandstrand.carto.com/api/v2/sql?format=GeoJSON&q=" + sqlSer, function (data) {
+    var sqlSer = "SELECT poilabel, poitype, the_geom FROM public.gnp_poi WHERE poitype IN ('Bus Stop / Shuttle Stop','Cabin','Campground','Gas Station','Lodging','Parking','Restroom','Trailhead', 'Train Station','Viewpoint','Visitor Center')";
+    var searchLayer = $.getJSON("https://lostabroad.carto.com/api/v2/sql?format=GeoJSON&q=" + sqlSer, function (data) {
         return L.geoJson(data);
         console.log(L.geoJson(data));
     });
@@ -528,7 +528,7 @@ $(document).ready(function () {
     });
 
     var ddlTrails = document.getElementById("ddlTrails")
-    $.get("https://sgrandstrand.carto.com/api/v2/sql?q=" + sqlQueryddl,
+    $.get("https://lostabroad.carto.com/api/v2/sql?q=" + sqlQueryddl,
         function (data) {
             console.log(data);
             for (i = 0; i < data.total_rows; i++) {
@@ -546,7 +546,6 @@ $(document).ready(function () {
     $("#reviewSubmitBtn").click(function (e) {
         e.preventDefault(); //just use when testing
 
-
         var x = $("#review_trails_form").serializeArray();
 
         var trailVal = x[0].value;
@@ -556,9 +555,9 @@ $(document).ready(function () {
         var userDate = x[4].value;
         var fn = x[1].value;
         var ln = x[2].value;
-        var sqlReview = "INSERT INTO sgrandstrand.user_review(trail_id, review, user_date, first_name, last_name) VALUES(" + trailID + ", '" + review_ + "' , '" + userDate + "' , '" + fn + "' ,'" + ln + "')";
+        var sqlReview = "INSERT INTO public.user_review(trail_id, review, user_date, first_name, last_name) VALUES(" + trailID + ", '" + review_ + "' , '" + userDate + "' , '" + fn + "' ,'" + ln + "')";
 
-        var posting = $.post("https://sgrandstrand.carto.com/api/v2/sql?q=" + sqlReview).done(function () {
+        var posting = $.post("https://lostabroad.carto.com/api/v2/sql?q=" + sqlReview).done(function () {
             alert("Your review has been submitted!")
             // Reset the form
             $("#review_trails_form")[0].reset();
@@ -590,7 +589,7 @@ $(document).ready(function () {
         //        "WHERE miles distanceRange"
 
 
-        var sqlFilter = "SELECT t.the_geom, t.class, t.route_no, t.name, t.meters, t.miles, t.trlname,t.trllabel, t.trluse, t.trlclass, u.first_name, u.last_name, u.trail_id, u.user_date, u.review FROM sgrandstrand.gnp_trailss AS t LEFT OUTER JOIN sgrandstrand.user_review AS u ON t.route_no = u.trail_id"
+        var sqlFilter = "SELECT t.the_geom, t.class, t.route_no, t.name, t.meters, t.miles, t.trlname,t.trllabel, t.trluse, t.trlclass, u.first_name, u.last_name, u.trail_id, u.user_date, u.review FROM public.gnp_trailss AS t LEFT OUTER JOIN public.user_review AS u ON t.route_no = u.trail_id"
 
 
 
@@ -629,7 +628,7 @@ $(document).ready(function () {
         }
         console.log(sql);
 
-        var filterTrails = $.getJSON("https://sgrandstrand.carto.com/api/v2/sql?format=GeoJSON&q=" + sql, function (data) {
+        var filterTrails = $.getJSON("https://lostabroad.carto.com/api/v2/sql?format=GeoJSON&q=" + sql, function (data) {
             trails = L.geoJson(data, {
                 onEachFeature: function (feature, layer) {
                     console.log(feature);
