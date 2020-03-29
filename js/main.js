@@ -310,7 +310,7 @@ $.getJSON(url23, function (data) {
 var trails = $.getJSON("https://lostabroad.carto.com/api/v2/sql?format=GeoJSON&q=" + sqlQuery1, function (data) {
     trails = L.geoJson(data, {
         onEachFeature: function (feature, layer) {
-            layer.bindPopup('<p><b>' + feature.properties.trllabel + '</b><br/><em>' + 'Trail Distance: ' + feature.properties.miles + '<br/><em>'+ 'Trail Use: ' + feature.properties.trluse + '<br/><em>' + 'Reviews: ' + feature.properties.user_date + ': ' +'<br/>' + 'Date of Review: ' + feature.properties.review + '</p>');
+            layer.bindPopup('<p><b>' + feature.properties.trllabel + '</b><br/><em>' + 'Trail Distance: ' + feature.properties.miles + '<br/><em>'+ 'Trail Use: ' + feature.properties.trluse + '<br/><em>' + 'Reviews: ' + feature.properties.review + ': ' +'<br/>' + 'Date of Review: ' + feature.properties.user_date + '</p>');
             layer.on({
                 mouseover: function (e) {
                     layer.setStyle({
