@@ -315,11 +315,11 @@ var trails = $.getJSON("https://lostabroad.carto.com/api/v2/sql?format=GeoJSON&q
                 mouseover: function (e) {
                     layer.setStyle({
                         weight: 3,
-                opacity: 1,
-                color: 'red',
-                dashArray: '5',
-                fillOpacity: 1,
-                fillColor: '#ff0000'
+                        opacity: 1,
+                        color: 'red',
+                        dashArray: '5',
+                        fillOpacity: 1,
+                        fillColor: '#ff0000'
                     });
                     if (!L.Browser.ie && !L.Browser.opera) {
                         layer.bringToFront();
@@ -650,8 +650,11 @@ $(document).ready(function () {
                         mouseover: function (e) {
                             layer.setStyle({
                                 weight: 3,
-                                color: "#00FFFF",
-                                opacity: 1
+                            opacity: 1,
+                            color: 'red',
+                            dashArray: '5',
+                            fillOpacity: 1,
+                            fillColor: '#ff0000'
                             });
                             if (!L.Browser.ie && !L.Browser.opera) {
                                 layer.bringToFront();
