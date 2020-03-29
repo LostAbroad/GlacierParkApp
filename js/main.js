@@ -485,6 +485,16 @@ $(document).ready(function () {
         animateSidebar();
         return false;
     });
+    
+    $("#sidebar-toggle-btn2").click(function () {
+        animateSidebar();
+        return false;
+    });
+    
+    $("#sidebar-toggle-btn3").click(function () {
+        animateSidebar();
+        return false;
+    });
 
     $("#sidebar-hide-btn").click(function () {
         animateSidebar();
