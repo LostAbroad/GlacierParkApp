@@ -115,6 +115,14 @@ a#filter-btn:hover {
     border: 60px;
 }
 */
+.leaflet-popup-content-wrapper {
+    background:lightblue;
+    color:darkcyan;
+    font-size:12px;
+    line-height:10px;
+    border-radius: 10px;
+    box-shadow: 10px 15px 30px aliceblue;
+}
 
 .leaflet-control-layers-expanded {
     overflow: auto;
@@ -272,6 +280,9 @@ input[type="checkbox"] {
     margin-left: -2em;
 }
 */
+.trails{
+    box-shadow: 10px 20px 30px blue;
+}
 
 #query-trails-reset {
     margin-left: 20px;
