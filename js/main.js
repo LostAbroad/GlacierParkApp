@@ -545,27 +545,35 @@ $(document).ready(function () {
 
     $("#reviewSubmitBtn").click(function (e) {
         e.preventDefault(); //just use when testing
-
+//
         var x = $("#review_trails_form").serializeArray();
+        
+        var fn1 = x[0].value;
+        var fn= "'"+fn1+"'";
+        var ln1 = x[1].value;
+        var ln = "'"+ln1+"'";
+        var trailVal1 = x[2].value;
+        var trailVal = "'"+trailVal1+"'";
+        var review_1 = x[3].value;
+        var review_ = "'"+review_1+"'";
+        var userDate1 = x[4].value;
+        var userDate ="'"+userDate1+"'";
+        
+        
+        var sqlReview = "INSERT INTO public.user_review(first_name, last_name, trail_id, review, user_date) VALUES(" + fn +","+ ln + "," + trailVal +"," + review_ + "," + userDate + ")";
+//        var sqlReview = "INSERT INTO public.user_review(trail_id, review, first_name, last_name) VALUES(" + trailVal + ", '" + review_ + "' , '" + fn + "' ,'" + ln + "')";
 
-        var trailVal = x[0].value;
-        var trailID = (trailVal * 1);
-
-        var review_ = x[5].value;
-        var userDate = x[4].value;
-        var fn = x[1].value;
-        var ln = x[2].value;
-        var sqlReview = "INSERT INTO public.user_review(trail_id, review, user_date, first_name, last_name) VALUES(" + trailID + ", '" + review_ + "' , '" + userDate + "' , '" + fn + "' ,'" + ln + "')";
-
-        var posting = $.post("https://lostabroad.carto.com/api/v2/sql?q=" + sqlReview).done(function () {
-            alert("Your review has been submitted!")
+        var posting = 
+            $.post("https://lostabroad.carto.com/api/v2/sql?api_key=23bcc80f5aebb7dc4cbdd6f526fac56021980c55&q=" + sqlReview).done(function () {alert("Your review has been submitted!");
             // Reset the form
             $("#review_trails_form")[0].reset();
         }).fail(function (xhr, status, error) {
             alert("Status: " + status + "\nError: " + error)
         });
+//        console.log(posting.sql);
 
     });
+    
     $("#querySubmitBtn").click(function (e) {
         e.preventDefault(); //just use when testing
         $('#trailFiltOutput').empty();
