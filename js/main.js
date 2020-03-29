@@ -641,7 +641,7 @@ $(document).ready(function () {
                 onEachFeature: function (feature, layer) {
                     console.log(feature);
                     console.log(feature.properties);
-                    layer.bindPopup('<p><b>' + feature.properties.trllabel + '</b><br/><em>' + 'Trail Distance: ' + feature.properties.miles + '<br/><em>'+ 'Trail Usage: ' + feature.properties.trluse + '<br/><em>' + 'Reviews: ' + feature.properties.user_date.toFixed(4) + ': ' + feature.properties.review + '</p>');
+                    layer.bindPopup('<p><b>' + feature.properties.trllabel + '</b><br/><em>' + 'Trail Distance: ' + feature.properties.miles + '<br/><em>'+ 'Trail Usage: ' + feature.properties.trluse + '<br/><em>' + 'Reviews: ' + feature.properties.review + '<br/>'+feature.properties.user_date+'</p>');
                     $('#trailFiltOutput').append('<p class="trail-filter">' + feature.properties.trllabel + '</p>')
                     layer.on({
                         mouseover: function (e) {
