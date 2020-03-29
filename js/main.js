@@ -580,8 +580,8 @@ $(document).ready(function () {
             $.post("https://lostabroad.carto.com/api/v2/sql?api_key=23bcc80f5aebb7dc4cbdd6f526fac56021980c55&q=" + sqlReview).done(function () {alert("Your review has been submitted!");
             // Reset the form
             $("#review_trails_form")[0].reset();
-        }).fail(function (xhr, status, error) {
-            alert("Status: " + status + "\nError: " + error)
+        }).fail(function (xhr) {
+            alert("Unable to submit! All five submission categories are necessary.")
         });
 //        console.log(posting.sql);
 
