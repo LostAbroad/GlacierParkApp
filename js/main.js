@@ -683,7 +683,7 @@ $(document).ready(function () {
     });
 
 /*Legend specific*/
-var legend = L.control({ position: "bottomright" });
+var legend = L.control({ position: "bottomleft" });
 
 legend.onAdd = function(map) {
   var div = L.DomUtil.create("div", "legend");
