@@ -295,12 +295,13 @@ input[type="checkbox"] {
 */
 /*Legend specific*/
 .legend {
+    margin-bottom: auto;
   padding: 6px 8px;
   font: 14px Arial, Helvetica, sans-serif;
   background: white;
   background: rgba(255, 255, 255, 0.8);
-  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
-  /*border-radius: 5px;*/
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
   line-height: 24px;
   color: #555;
 }
@@ -312,8 +313,8 @@ input[type="checkbox"] {
 }
 
 .legend span {
-  position: static;
-  bottom: 3px;
+  position: relativ;
+  bottom: 30px;
 }
 
 .legend i {
