@@ -682,6 +682,23 @@ $(document).ready(function () {
 
     });
 
+/*Legend specific*/
+var legend = L.control({ position: "bottomright" });
+
+legend.onAdd = function(map) {
+  var div = L.DomUtil.create("div", "legend");
+  div.innerHTML += "<h4>Trails and Roads</h4>";
+  div.innerHTML += '<i style="background: black"></i><span>Asphalt</span><br>';
+  div.innerHTML += '<i style="background: #BF9D7E"></i><span>Gravel</span><br>';
+  div.innerHTML += '<i style="background: green"></i><span>Trail Use: Very Low</span><br>';
+  div.innerHTML += '<i style="background: yellow"></i><span>Trail Use: Low</span><br>';
+  div.innerHTML += '<i style="background: orange"></i><span>Trail Use: High</span><br>';
+//  div.innerHTML += '<i class="icon" style="background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/194515-200.png);background-repeat: no-repeat;"></i><span>Grænse</span><br>';
+
+  return div;
+};
+
+legend.addTo(map);
 
     // Leaflet patch to make layer control scrollable on touch browsers
     var container = $(".leaflet-control-layers")[0];
