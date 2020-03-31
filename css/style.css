@@ -312,7 +312,7 @@ input[type="checkbox"] {
 }
 
 .legend span {
-  position: sticky;
+  position: static;
   bottom: 3px;
 }
 
