@@ -303,6 +303,7 @@ input[type="checkbox"] {
   border-radius: 10px;
   line-height: 24px;
   color: #555;
+    position: static;
 }
 .legend h4 {
   text-align: center;
@@ -312,7 +313,7 @@ input[type="checkbox"] {
 }
 
 .legend span {
-  position: relative;
+  position:relative;
   bottom: 3px;
     margin-bottom: 30px;
 }
