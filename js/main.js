@@ -13,10 +13,6 @@ var outdoors = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.
 	attribution: '&copy; Openstreetmap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
-//var imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-//	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
-//});
-
 var mapOptions = {
     zoomControl: false,
     center: [48.690176, -113.757130],
@@ -36,7 +32,6 @@ zoomHome.addTo(map);
 var baseMaps = {
     "Default": outdoors,
     "Terrain": topoterrain,
-//    "Imagery": imagery
 }
 
 
@@ -443,9 +438,6 @@ var locateControl = L.control.locate({
     icon: "fa fa-compass",
     metric: false,
     strings: {
-//        title: "Current location",
-//        popup: "You are within {distance} {unit} from this point",
-//        outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
     },
     locateOptions: {
         maxZoom: 18,
@@ -465,22 +457,12 @@ function getsearchdata() {
     });
 }
 
-//map.addControl(new L.Control.Search({
-//    sourceData: getsearchdata,
-//    propertyName: 'poilabel',
-//    textPlaceholder: 'Search for Point of Interest...',
-//    markerLocation: true
-//}));
-
-
 $(document).ready(function () {
     $("#query-trails-reset").click(function () {
         $("#query_trails_form")[0].reset();
         $('#trailFiltOutput').empty();
     });
-//
-//    $('<p class = "controlHeader">Basemap Tilesets</p>').insertBefore('div.leaflet-control-layers-base');
-//
+    
     $("#sidebar-toggle-btn").click(function () {
         animateSidebar();
         return false;
@@ -508,16 +490,6 @@ $(document).ready(function () {
             map.invalidateSize();
         });
     }
-
-//    function openReview() {
-//        $("#reviewTrails").animate('show');
-//        $("#filterTrails").collapse('hide');
-//    }
-//
-//    function openFilter() {
-//        $("#filterTrails").collapse('show');
-//        $("#reviewTrails").collapse('hide');
-//    }
 
     /* Highlight search box text on click */
     $("#searchbox").click(function () {
@@ -574,7 +546,6 @@ $(document).ready(function () {
         
         
         var sqlReview = "INSERT INTO public.user_review(first_name, last_name, trail_id, review, user_date) VALUES(" + fn +","+ ln + "," + trailVal +"," + review_ + "," + userDate + ")";
-//        var sqlReview = "INSERT INTO public.user_review(trail_id, review, first_name, last_name) VALUES(" + trailVal + ", '" + review_ + "' , '" + fn + "' ,'" + ln + "')";
 
         var posting = 
             $.post("https://lostabroad.carto.com/api/v2/sql?api_key=23bcc80f5aebb7dc4cbdd6f526fac56021980c55&q=" + sqlReview).done(function () {alert("Your review has been submitted!");
@@ -583,32 +554,25 @@ $(document).ready(function () {
         }).fail(function (xhr) {
             alert("Unable to submit! All five submission categories are necessary.")
         });
-//        console.log(posting.sql);
 
     });
     
     $("#querySubmitBtn").click(function (e) {
-        e.preventDefault(); //just use when testing
+        e.preventDefault();
         $('#trailFiltOutput').empty();
         map.removeLayer(trails);
-
-        //        map.removeLayer(filterTrails);
 
         var x = $("#query_trails_form").serializeArray();
         console.log(x);
 
         var surfaceType = x[1].value;
         console.log(surfaceType);
-        //        "WHERE trluse = 'surfaceType'"
 
         var classType = x[2].value;
         console.log(classType);
-        //        "WHERE trlclass LIKE 'classType'"
 
         var distanceRange = x[0].value;
         console.log(distanceRange);
-        //        "WHERE miles distanceRange"
-
 
         var sqlFilter = "SELECT t.the_geom, t.class, t.route_no, t.name, t.meters, t.miles, t.trlname,t.trllabel, t.trluse, t.trlclass, u.first_name, u.last_name, u.trail_id, u.user_date, u.review FROM public.gnp_trailss AS t LEFT OUTER JOIN public.user_review AS u ON t.route_no = u.trail_id"
 
@@ -693,8 +657,6 @@ legend.onAdd = function(map) {
   div.innerHTML += '<i style="background: orange"></i><span>High</span><br>';
   div.innerHTML += '<i style="background: black"></i><span>Asphalt</span><br>';
   div.innerHTML += '<i style="background: #BF9D7E"></i><span>Gravel</span><br>';
-//  div.innerHTML += '<i class="icon" style="background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/194515-200.png);background-repeat: no-repeat;"></i><span>Grænse</span><br>';
-
   return div;
 };
 
